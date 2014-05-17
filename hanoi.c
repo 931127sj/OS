@@ -15,7 +15,7 @@ int main(void)
 		
         printf("Enter number of hanoi's floor : ");
         scanf("%d",&n);
-
+/*
 		if(fork()){ // parents
 			if(fork()){ // parents
 				if(fork()){ // parents
@@ -66,18 +66,17 @@ int main(void)
 			cnum = 1;
 			moveHanoi('A', 'B', 'C', n);
 		}
+*/
 
-/*
 		  while(1){
 			if(!pid){
 			  	cnum += 1;
 			  	child_value += moveHanoi('A', 'B', 'C', n);
 			}else{
-				pid = createChild();
+				if(child_num < 10) pid = createChild();
 			}
 			if(child_value == 10) break;
 	      }
-*/
 
         return 0;
 }
