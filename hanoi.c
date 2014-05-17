@@ -15,7 +15,8 @@ int main(void)
 		
         printf("Enter number of hanoi's floor : ");
         scanf("%d",&n);
-/*
+
+// CODE2
 		if(fork()){ // parents
 			if(fork()){ // parents
 				if(fork()){ // parents
@@ -26,62 +27,62 @@ int main(void)
 									if(fork()){ // parents
 										if(fork()){ // parents
 											if(fork()){ // parents
-											}else{
+											}else{ // Last child node (10)
 												cnum = 10;
 												moveHanoi('A', 'B', 'C', n);
 											}
-										}else{
+										}else{ // 9th child node
 											cnum = 9;
 											moveHanoi('A', 'B', 'C', n);
 										}
-									}else{
+									}else{ // 8th child node
 										cnum = 8;
 										moveHanoi('A', 'B', 'C', n);
 									}
-								}else{
+								}else{ // 7th child node
 									cnum = 7;
 									moveHanoi('A', 'B', 'C', n);
 								}
-							}else{
+							}else{ // 6th child node
 								cnum = 6;
 								moveHanoi('A', 'B', 'C', n);
 							}
-						}else{
+						}else{ // 5th child node
 							cnum = 5;
 							moveHanoi('A', 'B', 'C', n);
 						}
-                    }else{
+		                      }else{ // 4th child node
 						cnum = 4;
 						moveHanoi('A', 'B', 'C', n);
-                    }
-				}else{
+        		              }
+				}else{ // 3rd child node
 					cnum = 3;
 					moveHanoi('A', 'B', 'C', n);
 				}
-			}else{
+			}else{ // 2nd child node
 				cnum = 2;
 				moveHanoi('A', 'B', 'C', n);
 			}
-		}else{
+		}else{ // 1st child node
 			cnum = 1;
 			moveHanoi('A', 'B', 'C', n);
 		}
-*/
 
+/* CODE1
 		  while(1){
-			if(!pid){
-			  	cnum += 1;
-			  	child_value += moveHanoi('A', 'B', 'C', n);
-			}else{
-				if(child_num < 10) pid = createChild();
+			if(!pid){ // child node
+			  	cnum += 1; // child node number
+			  	child_value += moveHanoi('A', 'B', 'C', n); // do moveHanoi function and check end of child node's work
+			}else{ // parents node
+				if(child_num < 10) pid = createChild(); // do createChild function and check number of child node
 			}
-			if(child_value == 10) break;
-	      }
-
+			if(child_value == 10) break; // made 10 childe node and end all child node's work
+                  }
+*/
         return 0;
 }
 
-int moveHanoi(char from,char temp,char to, int n)
+int moveHanoi(char from,char temp,char to, int n) // Hanoi tower
 {
           if(n==1)
           {
@@ -96,7 +97,7 @@ int moveHanoi(char from,char temp,char to, int n)
           }
 }
 
-pid_t createChild(void){
-	child_num++;
-	return fork();
+pid_t createChild(void){ // make child node
+	child_num++; // check child node number
+	return fork(); // fork system call
 }
